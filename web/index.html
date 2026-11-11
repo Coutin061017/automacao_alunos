@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscrição em Curso - Ambiente de Treinamento</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; background: #f2f4f5; margin: 0; padding: 40px; color: #222; }
+    .caixa { max-width: 640px; margin: 0 auto; background: #fff; border: 1px solid #dcdfe2; border-radius: 8px; padding: 28px 32px; }
+    h1 { font-size: 20px; color: #2e6e62; margin: 0 0 4px; }
+    p.sub { margin: 0 0 24px; color: #666; font-size: 13px; }
+    .linha { display: flex; gap: 16px; flex-wrap: wrap; }
+    .campo { flex: 1; min-width: 200px; margin-bottom: 14px; }
+    label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 6px; }
+    input[type=text] { width: 100%; box-sizing: border-box; padding: 10px 12px; font-size: 15px; border: 1px solid #b9bfc4; border-radius: 5px; }
+    button { background: #2e6e62; color: #fff; border: none; padding: 11px 22px; font-size: 15px; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #255a50; }
+    table { width: 100%; border-collapse: collapse; margin-top: 28px; font-size: 14px; }
+    th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid #e2e6e8; }
+    th { background: #eef6f4; color: #2e6e62; }
+    caption { text-align: left; font-weight: bold; margin-bottom: 8px; color: #444; }
+  </style>
+</head>
+<body>
+  <div class="caixa">
+    <h1>Inscrição em Curso</h1>
+    <p class="sub">Ambiente de treinamento. Dados fictícios, sem qualquer relação com pessoas reais.</p>
+
+    <div class="linha">
+      <div class="campo">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" placeholder="Nome do aluno">
+      </div>
+      <div class="campo">
+        <label for="whatsapp">WhatsApp</label>
+        <input type="text" id="whatsapp" placeholder="(00) 00000-0000">
+      </div>
+    </div>
+
+    <button id="cadastrar">Cadastrar</button>
+
+    <table>
+      <caption>Histórico de inscrições</caption>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>WhatsApp</th>
+        </tr>
+      </thead>
+      <tbody id="corpo_tabela">
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    document.getElementById("cadastrar").addEventListener("click", function () {
+      var nome = document.getElementById("nome").value;
+      var whatsapp = document.getElementById("whatsapp").value;
+
+      var linha = document.createElement("tr");
+      var tdNome = document.createElement("td");
+      var tdZap = document.createElement("td");
+      tdNome.textContent = nome;
+      tdZap.textContent = whatsapp;
+      linha.appendChild(tdNome);
+      linha.appendChild(tdZap);
+      document.getElementById("corpo_tabela").appendChild(linha);
+
+      document.getElementById("nome").value = "";
+      document.getElementById("whatsapp").value = "";
+      document.getElementById("nome").focus();
+    });
+  </script>
+</body>
+</html>
